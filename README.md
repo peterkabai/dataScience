@@ -1,2 +1,3 @@
 # Data Science
-Materials I am using to prepare for and to be a better teaching assistant for Intro to Data Science CST 383 Spring 2019
+Materials I'm using to prepare for and to be a better TA for Intro to Data Science at CSUMB  
+More info info on the TA program can be found here: <a href src="https://taplusplus.wordpress.com/">taplusplus.wordpress.com/<a>
