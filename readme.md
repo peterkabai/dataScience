@@ -4,5 +4,8 @@ More info info on the TA program at CSUMB can be found here: <a href="https://ta
 
 ## Installing R Studio:  
 Installing R on Mac using homebrew: `brew install r`  
-Installing R on Mac or Windows normally: <a href="https://cran.r-project.org/">cran.r-project.org/</a>  
-Download R Studio: <a href="https://www.rstudio.com/products/rstudio/download/">www.rstudio.com/products/rstudio/download</a>  
+Installing R on Mac or Windows normally: <a href="https://cran.r-project.org/">cran.r-project.org</a>  
+Download R Studio: <a href="https://www.rstudio.com/products/rstudio/download/">rstudio.com/products/rstudio/download</a>  
+
+## R Shiny  
+Shiny apps can be deployed for free here <a href="https://www.shinyapps.io/">shinyapps.io</a>
