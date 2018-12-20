@@ -105,7 +105,8 @@ barplot(
   col="blue"
 )
 
-# Create a simple box plot showing mileage as a function of number of cylinders.  Use function ‘boxplot’.
+# Create a simple box plot showing mileage as a function of number of cylinders.  
+# Use function ‘boxplot’.
 boxplot(mpg ~ cyl, range=0, data=mtcars)
 
 # Improve your boxplot by adding color, title, and x/y axis labels.
