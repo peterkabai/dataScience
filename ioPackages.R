@@ -1,5 +1,5 @@
 # Read csv file from a URL
-url = "https://raw.githubusercontent.com/peterkabai/dataScience/master/data/censusSample.csv"
+url = "https://raw.githubusercontent.com/peterkabai/dataScience/master/data/census.csv"
 dat = read.csv(url)
 
 # Display first few lines

@@ -1,6 +1,6 @@
 library(shiny)
 
-dat = read.csv("https://raw.githubusercontent.com/peterkabai/dataScience/master/data/crashData.csv")
+dat = read.csv("https://raw.githubusercontent.com/peterkabai/dataScience/master/data/crash.csv")
 dat[dat == "N/A"] = NA
 
 ui <- fluidPage(

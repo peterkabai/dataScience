@@ -1,5 +1,5 @@
 # read the census data as a data frame
-dat = read.csv("https://raw.githubusercontent.com/peterkabai/dataScience/master/data/censusSample.csv")
+dat = read.csv("https://raw.githubusercontent.com/peterkabai/dataScience/master/data/census.csv")
 
 # how many people are in each category of education?
 edu_tbl = table(dat$education)
