@@ -1,0 +1,334 @@
+---
+title: "Quiz Review"
+author: "Peter Kabai"
+output:
+  ioslides_presentation:
+    incremental: true
+    widescreen: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(width = 100)
+```
+
+## Things We Will Review
+
+- Basic data science
+- Classification, regression and clustering
+- KNN
+- R coding
+
+## The Basics
+
+- What do we want to make good predictions on?
+- Training or test data? Why?
+- What happens if our model is too specific to the training data?
+- What about if it doesn't fit the training data enough? 
+- What is a feature? What about a feature space?
+
+## Classification
+
+- We're trying to predict a label, or category.
+- This is supervised learning, we know the label of each training example, that is, what category it belongs to.
+- Example: given information about credit card debt, we try to predict whether or not the person defaulted on their debt.
+- What could some possible target features be categories be?
+- If the data shows the output to be 1 or 0, is that correct? Aren't numerical features for regression?
+- What is an example of something that cannot be the output of a model that does classification?
+
+## Regression
+
+- Here we're trying to predict a numerical output.
+- This is supervised learning, we know the value of the target feature for each training example. 
+- Example: given the engine size, transmission type, and vehicle weight, predict the mpg.
+- What are other possible target features of a model that uses car data?
+- What are features that would not be target features in a regression problem?
+
+## Clustering
+
+- Here we're grouping data together into any number of categories.
+- Unsupervised learning, we give the model some data, and it finds similarities on its own.
+
+## KNN
+
+- KNN can be used for both regression, and classification.
+- In KNN classification the output is the most frequent label of the K closest points.
+- In KNN regression the output is the mean of the K closest points.
+
+## KNN Visual
+
+![](images/KNN.jpeg)
+
+# R Coding!
+
+## Vectors {.build}
+
+```{r, echo = TRUE,}
+# There are no scalars! This expression is equal to 1
+length(5)
+
+# The function length() returns the number of items in a vector
+# All item in a vector must be the same type
+
+# If they aren't the lower types get converted to the higher type
+c(1, 2, "three")
+```
+
+## Sampling {.build}
+
+```{r, error = TRUE, echo = TRUE}
+# Sampling is a way to create a vector with random values
+sample(1:10, 100)
+
+# This fails, because there are only 10 options, 
+# but we're trying to pick 100.
+# To fix it, we can set replace to TRUE
+```
+
+## Sampling {.build}
+
+```{r, error = TRUE, echo = TRUE }
+sample(1:10, 100, replace=TRUE)
+
+# We can also simply add the TRUE parameter.
+sample(1:10, 100, TRUE)
+```
+
+## Sequences {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# There are multiple ways to do write parameters for sequences.
+seq(from=1, to=10, by=2)
+seq(1, 10, 2)
+```
+
+## Boolean Vectors {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# Just a vector of true or false values
+# These can be used to index into vectors
+n = c(TRUE, FALSE, TRUE, FALSE)
+m = c(TRUE, FALSE)
+v = c(1:4)
+```
+
+## Boolean Vectors {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# What is the output of both?
+# Which of these uses recycling?
+v[m]
+v[n]
+# The first one uses recycling, because length(v) is 4
+# but length(m) is 2
+```
+
+## Boolean Vectors {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# Use sequence to create an identical variable
+c(1:100)[c(c(TRUE, FALSE, FALSE), c(FALSE, FALSE))]
+
+# Answer:
+seq(1,100,5)
+
+# A boolean vector is created that then is used to index 
+# the vector c(1:100)
+```
+
+## Recycling {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# What is the result of this expression?
+c(1:2) * c(1:4)
+
+# Answer:
+# The first vector is recycled, so the result is c(1,4,3,8)
+
+# What is the result of this expression?
+c(1:2) * c(1:5)
+
+# This runs, but also creates a warning
+```
+
+## Vector Operations {.build}
+
+```{r, error = TRUE, echo = TRUE }
+c(1,2,3,4,5,6,7,8,9,10)
+
+# Re-write the above vector in a cleaner way
+c(1:10)
+
+# What will be the content of y?
+x = c(1:10)
+y = x + 5
+
+# This is a vectorized operation, so 5 gets added 
+# to ALL the values in x, and x becomes c(6,7,8,9,10,11,12,13,14,15)
+```
+
+## Vectorized vs. Aggregate Functions {.build}
+
+```{r, error = TRUE, echo = TRUE }
+x = c(1:10)
+sqrt(x)
+mean(x)
+min(x)
+max(x)
+```
+
+## Vectorized vs. Aggregate Functions {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# What will be the result of this expression?
+mean(x) < 5
+# How about this one?
+mean(x < 5)
+# What's the result of the intermediate step above?
+x < 5
+```
+
+## Vectorized vs. Aggregate Functions {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# Remember, when aggregator functions are called on boolean
+# vectors, the values are converted to 1 or 0
+v = c(TRUE,TRUE,TRUE,TRUE,FALSE,FALSE,FALSE,FALSE,FALSE,FALSE)
+# What is the output of this expression?
+sum(v)
+# And this one?
+sqrt(v)
+```
+
+## Data Frames (Using Indices) {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# Using the built in mtcars data frame
+# How do you get the all rows but just columns 3 to 5?
+dat = mtcars[,3:5]
+dat
+```
+
+## Data Frames (Using Column Names) {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# How about if we want column names?
+dat = mtcars[,c("cyl","hp")]
+dat
+```
+
+## Data Frames {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# How about the same as before, but only rows 1 to 5?
+dat = mtcars[1:5,c("cyl","hp")]
+dat
+```
+
+## Data Frames {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# Add the mpg column but only show rows where mpg > 20?
+dat = mtcars[mtcars$mpg > 20,c("cyl","hp","mpg")]
+dat
+```
+
+## Data Frames {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# We're using a boolean vector to index the rows
+mtcars$mpg > 20
+# This shows which rows to include, and which rows to ignore
+```
+
+## CSV to Plot {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# Read the CSV
+dat_raw = read.csv("data/quizReview.csv")
+dat_raw
+```
+
+## CSV to Plot {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# Remove the first row, which is just a timestamp
+dat = dat_raw[,-1]
+
+# Convert all values to either a 1 or a 0
+dat[,] = ifelse (is.na(dat) | dat != "I can make it!", 0,  1)
+
+dat
+```
+
+## CSV to Plot {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# Check to see if all columns are now numeric
+sapply(dat, class)
+
+# Change the names of the columns (gsub wasn't covered in class)
+names(dat) = gsub("[.]", " ", names(dat))
+
+# Show the number of "I can make it!" votes for each day
+sapply(dat, sum)
+```
+
+## CSV to Plot {.build}
+
+```{r, error = TRUE, echo = TRUE }
+# Sorting that vector
+vect_of_times = sort(sapply(dat, sum), decreasing = TRUE)
+vect_of_times
+```
+
+## CSV to Plot {.build}
+
+```{r, error = TRUE, echo = TRUE, fig.width = 7, fig.height = 3 }
+# plot the named vector of times
+par(mar = c(4, 11, 2, 1), mgp = c(9,1,0))
+barplot(
+  vect_of_times, las = 1,horiz = TRUE, col = "blue",
+  ylab = "Time of Session", main = "The Number of People for Each Day"
+)
+```
+
+## Other Types of Plots (Histogram) {.build}
+
+```{r, error = TRUE, echo = TRUE, fig.width = 7, fig.height = 3 }
+hist(
+  mtcars$mpg, 
+  main = "Histogram of MPG Frequency", xlab = "MPG"
+)
+```
+
+## Other Types of Plots (Line) {.build}
+
+```{r, error = TRUE, echo = TRUE, fig.width = 7, fig.height = 3 }
+x = sample(1:10, 10, TRUE) # vector of random values
+plot(
+  x, type="b",
+  main = "Random Numbers in a Vector", xlab = "Index", ylab = "Random Value"
+)
+```
+
+## Other Types of Plots (Scatter) {.build}
+
+```{r, error = TRUE, echo = TRUE, fig.width = 7, fig.height = 3 }
+plot(
+  mtcars$disp, mtcars$mpg,
+  main = "Mileage for Displacement", xlab = "Displacement", ylab = "MPG"
+)
+```
+
+## Other Types of Plots (Scatter) {.build}
+
+```{r, error = TRUE, echo = TRUE, fig.width = 7, fig.height = 3 }
+# a different way to do the same thing
+plot(
+  mpg ~ disp, data=mtcars, col="red", pch=19,
+  main = "Mileage for Displacement", xlab = "Displacement", ylab = "MPG"
+)
+```
+
+# Anything else?
