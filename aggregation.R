@@ -73,7 +73,7 @@ dat_new = dat[,c("capital_gain","capital_loss")]
 dat_new
 
 # create a vector consisting of the means of each column
-means = c(mean(dat_new$capital_gain),mean(dat_new$capital_loss))
+means2 = apply(dat_new, 2, mean)
 means
 
 # create a vector of boolean values indicating, for each row,
