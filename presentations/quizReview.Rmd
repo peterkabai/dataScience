@@ -109,7 +109,7 @@ seq(1, 10, 2)
 # These can be used to index into vectors
 n = c(TRUE, FALSE, TRUE, FALSE)
 m = c(TRUE, FALSE)
-v = c(1:4)
+v = 1:4
 ```
 
 ## Boolean Vectors {.build}
@@ -140,13 +140,13 @@ seq(1,100,5)
 
 ```{r, error = TRUE, echo = TRUE }
 # What is the result of this expression?
-c(1:2) * c(1:4)
+1:2 * 1:4
 
 # Answer:
 # The first vector is recycled, so the result is c(1,4,3,8)
 
 # What is the result of this expression?
-c(1:2) * c(1:5)
+1:2 * 1:5
 
 # This runs, but also creates a warning
 ```
@@ -157,10 +157,10 @@ c(1:2) * c(1:5)
 c(1,2,3,4,5,6,7,8,9,10)
 
 # Re-write the above vector in a cleaner way
-c(1:10)
+1:10
 
 # What will be the content of y?
-x = c(1:10)
+x = 1:10
 y = x + 5
 
 # This is a vectorized operation, so 5 gets added 
@@ -170,7 +170,7 @@ y = x + 5
 ## Vectorized vs. Aggregate Functions {.build}
 
 ```{r, error = TRUE, echo = TRUE }
-x = c(1:10)
+x = 1:10
 sqrt(x)
 mean(x)
 min(x)
@@ -252,11 +252,11 @@ dat_raw
 ## CSV to Plot {.build}
 
 ```{r, error = TRUE, echo = TRUE }
-# Remove the first row, which is just a timestamp
+# Remove the first column, which is just a timestamp
 dat = dat_raw[,-1]
 
 # Convert all values to either a 1 or a 0
-dat[,] = ifelse (is.na(dat) | dat != "I can make it!", 0,  1)
+dat[] = ifelse (dat == "I can make it!", 1,  0)
 
 dat
 ```
