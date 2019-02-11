@@ -1,123 +1,85 @@
-#
-# lab work for R lecture 9 - R factors, lists, and matrices
-#
+# Factors, lists and matrices
 
-#############################################################
-#
-# factors
-#
-#############################################################
-
-#
-# let's look at the mtcars dataset (again)
-#
-
-# create a vector 'gear' of ordered factor values from the column 'gear'
-# (do you need to specify the ordering of the factor levels?)
+# Create a vector 'gear' of ordered factor values from the 
+# column 'gear' of the mtcars dataset.
 gear = ordered(mtcars$gear)
 
-# display the levels of the factor
+# Display the levels of the factor.
 gear
 
-#############################################################
-#
-# lists
-#
-#############################################################
+# Create a list x having component 'a' of value "foo",
+# component 'b' of value 1:4, and component 'c' of 
+# value function(x) 1.5 * x^2 to c.
+x = list(a="foo", b=1:4, c=function(x){1.5 * x^2})
+x
 
-# create a list x having component 'a' of value "foo", component 'b' of value 1:4,
-# and component 'c' of value function(x) 1.5 * x^2 to c
-x = list(a="foo", b=c(1:4), c=function(x){1.5 * x^2})
-
-# get the length of the 'a' component of list x, selecting the component by name
+#Get the length of the 'a' component of list x, 
+# selecting the component by name, then the 'b' component.
 length(x$a)
+length(x$b)
 
-# get the second and third elements of component b, accessing the 
-# list component by its index number
-x[[2]]
-x[[3]]
+# Get the second and third elements of component b, accessing the 
+# list component by its index number.
+x[[2]][c(2,3)]
 
-# apply function component 'c' of list x to value 2.5
+# Apply function component 'c' of list x to value 2.5
 x$c(2.5)
 
-# define a function avgsum that takes a numeric vector x, and
+# Define a function avgsum that takes a numeric vector x, and
 # returns a list with two elements: 'a', which is the average
-# value of x, and 'b', which is the sum of x.  Use 'stop' or
-# 'stopifnot' to handle the case of an empty list
+# value of x, and 'b', which is the sum of x. Use 'stop' or
+# 'stopifnot' to handle the case of an empty list.
 avgsum = function(x) {
   stopifnot(length(x) > 0)
   return( list(a=mean(x), b=sum(x) ))
 }
 
-# apply the function to 1:1000, and get the second component of
-# the result
+# Apply the function to 1:1000, and get the second 
+# component of the result.
 avgsum(1:1000)
 
-# create a list y containing two vectors: 'a', with value 1:1000,
-# and 'b', with value 1001:2000.
-y = list(a=(1:1000), b=(1001:2000))
+# Create a list y containing two vectors: 'a', with value 1:1000,
+# and 'b', with value 1001:2000
+y = list(a=1:1000, b=1001:2000)
 
-# show the first elements of component b of list y
-y$b
+# Show the first elements of component b of list y.
+head(y$b)
 
-# y is a lot like a data frame: it is a list of vectors where
-# all the vectors have the same length.  However, can you access
-# the b component of the third "row" of y, like you could with
-# a data frame?  Try it.
+# Create a 100 x 3 matrix of random values between 1 and 10
+x = matrix(sample(1:10, 300, TRUE), nrow=100, ncol=3)
+x
 
-# No you can't
+# Set the column names of x to "x1", "x2", "x3".
+colnames(x) = c("x1", "x2", "x3")
 
-#############################################################
-#
-# matrices
-#
-#############################################################
+# Show the first rows of matrix x.
+head(x)
 
-# create a matrix of feature vectors
-# In particular, create a 100 x 3 matrix of random values
-# between 1 and 10.
-mat = matrix(sample(1:10, 300, TRUE), nrow=100, ncol=3)
+# Compute the dimensions of matrix x.
+dim(x)
 
-# set the column names of x to "x1", "x2", "x3"
+# Create a 3 x 1 matrix b containing values 1.2, -0.24, 0.61
+b = matrix(c(1.2,-0.24,0.61))
+b
 
+# Confirm the dimensions of matrix b.
+dim(b)
 
-# show the first rows of matrix x
+# Perform matrix multiplication of x and b. Before doing this,
+# make sure the understand the dimension of the resulting matrix.
+r = x %*% b
+r
 
+# Check the dimensions of the resulting matrix.
+dim(r)
 
-# compute the dimensions of matrix x
+# Look at the first values of the resulting matrix.
+r[1]
 
+# Compute the average value of matrix x.
+mean(x)
 
-# Create a 3 x 1 matrix b containing values 1.2, -0.24, 0.61.
-
-
-# confirm the dimensions of matrix b
-
-
-# perform matrix multiplication of x and b.  Before doing this,
-# make sure the understand the dimension of the resulting matrix
-
-
-# check the dimensions of the resulting matrix
-
-
-# look at the first values of the resulting matrix
-
-
-# if each row of matrix x represents a feature vector, then how would you describe
-# matrices b and z?
-
-# ANSWER: b is a vector of linear coefficients; each value in z can be thought of as a
-# "weighted combination" of a feature vector (i.e. a row) of x
-
-#
-# if time permits...
-#
-
-# compute the average value of matrix x
-
-
-# figure out how to create a 3-dimensional plot of the feature vectors in matrix x
-# Google is your friend.
-
-
-
+# Figure out how to create a 3-dimensional plot of the 
+# feature vectors in matrix x.
+library(scatterplot3d)
+scatterplot3d(x, main="Plot of Matrix X")

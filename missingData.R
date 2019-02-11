@@ -51,7 +51,7 @@ dat_med = as.data.frame(sapply(dat, function(x) { x[is.na(x)] == mean(x, na.rm =
 }))
 dat_med
 
-# create a new data frame dat_med from your original data frame
+# create a new data frame dat_mea from your original data frame
 # by replacing each NA value with the mean of its column
 dat_mea = as.data.frame(sapply(dat, function(x) { x[is.na(x)] == mean(x, na.rm = TRUE)
   x
