@@ -1,5 +1,7 @@
 # Factors, lists and matrices
 
+# Lets start wuth factors
+
 # Create a vector 'gear' of ordered factor values from the 
 # column 'gear' of the mtcars dataset.
 gear = ordered(mtcars$gear)
@@ -7,13 +9,15 @@ gear = ordered(mtcars$gear)
 # Display the levels of the factor.
 gear
 
+# Now let's do some lists
+
 # Create a list x having component 'a' of value "foo",
 # component 'b' of value 1:4, and component 'c' of 
 # value function(x) 1.5 * x^2 to c.
 x = list(a="foo", b=1:4, c=function(x){1.5 * x^2})
 x
 
-#Get the length of the 'a' component of list x, 
+# Get the length of the 'a' component of list x, 
 # selecting the component by name, then the 'b' component.
 length(x$a)
 length(x$b)
@@ -44,6 +48,8 @@ y = list(a=1:1000, b=1001:2000)
 
 # Show the first elements of component b of list y.
 head(y$b)
+
+# Finally, here we'll do matrices
 
 # Create a 100 x 3 matrix of random values between 1 and 10
 x = matrix(sample(1:10, 300, TRUE), nrow=100, ncol=3)
