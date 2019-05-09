@@ -1,0 +1,69 @@
+---
+title: "Markdown Reference"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### A Paragraph:
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+### Basic Styling:
+*Italic*  
+**Bold** 
+
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+
+### Images:
+![](https://www.emojimeanings.net/img/emojis-en/grinning-smiley-in-a-good-mood-whatsapp-emoji-1F600.png)
+
+### Links:
+[https://www.r-project.org/](https://www.r-project.org/)
+
+### Colored Text: 
+<span style="color:red">Red</span>    
+<span style="color:blue">Blue</span>   
+<span style="color:green">Green</span>   
+<span style="color:yellow">Yellow</span>   
+<span style="color:violet">Violet</span>  
+ 
+### Colored Background:
+<span style="background-color:black; color:white">&nbsp;Text with background&nbsp;</span> 
+<span style="background-color:red; color:white">&nbsp;Text with background&nbsp;</span> 
+
+### Code Highlighting
+```javascript
+var s = "JavaScript";
+var three = 1 + 2;
+```
+```python
+s = "Python"  
+three = 1 + 2     
+```
+### Tables:
+Table | With | Content
+--- | --- | ---
+One | Two | Three
+1 | 2 | 3
+Uno | Dos | Tres
+Egy | Kettő | Három
+
+### Indented Quote:
+> The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+
+### Show the Code and Output:
+```{r}
+summary(cars)
+```
+
+### Hide the Code, Show Output:
+```{r pressure, echo=FALSE}
+summary(cars)
+```
