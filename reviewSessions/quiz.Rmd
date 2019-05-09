@@ -289,7 +289,7 @@ vect_of_times
 par(mar = c(4, 11, 2, 1), mgp = c(9,1,0))
 barplot(
   vect_of_times, las = 1,horiz = TRUE, col = "red",
-  ylab = "Day and Time", main = "Number of People Avaliable"
+  ylab = "Day and Time", main = "Num People Avaliable for Each Time"
 )
 ```
 
