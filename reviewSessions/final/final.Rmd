@@ -47,7 +47,7 @@ barplot(tbl, horiz = TRUE, las=1, main="Votes for Each Topic",
 
 ## System Design - Basics {.build}
 
-Q: Describe a learning curve, and what the different parts are? 
+Q: Describe a learning curve, and what the different parts are.
 
 A: One line represents the error rate on the training data, the other the error rate on the test data.
 
@@ -69,7 +69,7 @@ Q: Which plot is high bias, and which is high variance?
 knitr::include_graphics("images/bias_variance_labeled.jpeg")
 ```
 
-## System Design - The Significants {.build}
+## System Design - The Significance {.build}
 
 Q: What are the significants of each situation?
 
@@ -195,22 +195,32 @@ As in the example in the previous slide, we need to multiply by the ratio of aut
 
 Some questions to consider when using Naive Bayes:
 
-* Can continuous predictors be used?
-* Yes, either by binning or by reading the value from the density function.
-* What assumptions do we make when using Naive Bayes?
-* The predictors are conditionally independent.
-* What assumptions do we make using NB in R?
-* The distribution is Gaussian.
-* What other thing do wee need to pay attention to, when multiplying fractions?
-* Underflow, which can be prevented by taking the logs.
+Q: Can continuous predictors be used?
+
+A: Yes, either by binning or by reading the value from the density function.
+
+Q: What assumptions do we make when using Naive Bayes?
+
+A: The predictors are conditionally independent.
+
+Q: What assumptions do we make using NB in R?
+
+A: The distribution is Gaussian.
+
+Q: What other thing do we need to pay attention to, when multiplying fractions?
+
+A: Underflow, which can be prevented by taking the logs.
 
 ## Naive Bayes - Log {.build}
 
 "Taking the log" means we can change:
 
 $$\frac{P(blue|am) P(am) }{ P(blue|!am) P(!am) } > 1$$
+
 to:
+
 $$\log\frac{P(blue|am)}{ P(blue|!am)} + \log\frac{P(am) }{P(!am)} > 0$$
+
 to avoid underflow.
 
 ## Naive Bayes - R Example {.build}
@@ -269,6 +279,7 @@ The distance can be calculated in multiple ways.
 Visually represented using a dendrogram.
 
 The steps of hierarchical clustering are:
+
 1) Join the two nearest points/clusters.
 2) Repeat step 1 till there's just one cluster.
 3) Decide how many clusters you want, and make a "cut".
@@ -286,9 +297,9 @@ Q: What are some ways to define how close two clusters are?
 
 Let's draw them out!
 
-1) Complete: longest distance, between the furthest points
-2) Average: average of the distance from each point to every other
-3) Single: shortest distance, between the closest points
+1) Complete: longest distance, between the furthest points.
+2) Average: average of the distance from each point to every other.
+3) Single: shortest distance, between the closest points.
 
 ## Cluster Analysis - Hierarchical "Closeness" {.build}
 
@@ -311,6 +322,8 @@ Are decision trees used for classification or regression?
 Decision trees give specific values at each leaf node when used for regression.
 
 Q: When do we stop splitting? Why not make every training example a leaf node?
+
+A: To avoid overfitting.
 
 ## Decision Trees - A Simple Example {.build}
 
@@ -335,6 +348,7 @@ get_gini(0.75)
 ```
 
 Gini index is calculated:
+
 $$2 * (p * (1 – p))$$
 
 ## Logistic Regression - Basics {.build}
@@ -375,24 +389,24 @@ table(predicts, actuals)
 
 Q: What's the true positive rate?
 
-A: `8` because out of the 13 actually manual cars, we predicted 8 to be manual
+A: `8` because out of the 13 actually manual cars, we predicted 8 to be manual.
 
 Q: What's the false negative rate?
 
-A: `3` because out of the 19 actually automatic cars, we predicted 3 to be manual
+A: `3` because out of the 19 actually automatic cars, we predicted 3 to be manual.
 
 ## Logistic Regression - Precision and Recall {.build}
 
 What is precision and recall?
 
-$$precision = \frac{true\ positive}{true\ positive + false\ positive}$$
+$$precision = \frac{true\ positive}{true\ positive + false\ positive}$$ 
 
-$$recall = \frac{true\ positive}{true\ positive + false\ negative}$$
+$$recall = \frac{true\ positive}{true\ positive + false\ negative}$$ 
 
 In other words:
 
-* Precision is the proportion of positive predictions that were actually positive
-* Recall is the the proportion of the actual positives that we correctly predicted as positive
+* Precision is the proportion of positive predictions that were actually positive.
+* Recall is the the proportion of the actual positives that we correctly predicted as positive.
 
 When might these be useful?
 
@@ -429,11 +443,11 @@ knitr::include_graphics("images/knn.jpeg")
 
 Q: What threshold is used to determine whether or not a point is an anomaly in KNN anomaly detection?
 
-A: It depends on the data, the threshold is a hyperparameter
+A: It depends on the data, the threshold is a hyperparameter.
 
 Q: How should I change the hyperparameter K to increase model flexibility?
 
-A: By decreasing K, we are looking at fewer neighbors, and this increases the flexibility of our model. 
+A: By decreasing K, we are looking at fewer neighbors, and this increases the flexibility of our model.
 This can, though, lead to overfitting.
 
 ## Aggregation in R - Basics {.build}
@@ -463,8 +477,7 @@ I think of the `~` symbol as meaning "for each" like in this case, we are gettin
 
 ## Aggregation in R - The Table Function {.build}
 
-If we just want to count the occurrences in each category, we can use the `table()` function.
-How would you create a table of `cyl` values, and plot it using a bar plot?
+If we just want to count the occurrences in each category, we can use the `table()` function. Create a table of `cyl` values, and plot it using a bar plot?
 
 ```{r error = TRUE, echo = TRUE}
 barplot(table(mtcars$cyl), main="Car Counts by Cylinder Number", xlab="Num. of Cylinders")
@@ -507,9 +520,9 @@ abline(0,1)
 
 Conditional probability is the probability of something, given something else.
 
-What's the probability of rolling higher than a 4, given you rolled higher than a 3?
+Q: What's the probability of rolling higher than a 4, given you rolled higher than a 3?
 
-`2/3` because there are 3 possibilities higher than 3 (4, 5, and 6) and of those, 2 are higher than 4.
+A: `2/3` because there are 3 possibilities higher than 3 (4, 5, and 6) and of those, 2 are higher than 4.
 
 In conditional probability, we limit our scope to the given condition.
 
